@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RetroDixit</string>
+
+    <string name="no_card_found">No card found in assets. :(</string>
+    <string name="start_name_hint">Username</string>
+    <string name="start_action">Start</string>
+    <string name="current_select">Select this card</string>
+    <string name="current_show">Show</string>
+    <string name="current_hide">Hide</string>
+</resources>

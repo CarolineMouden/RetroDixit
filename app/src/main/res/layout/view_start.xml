@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="vm"
+            type="com.example.retrodixit.DixitViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:visibility="visible"
+        android:visibility="@{vm.currentScreen==vm.SCREEN_START ? View.VISIBLE : View.GONE, default = gone}"
+        android:paddingTop="100dp">
+
+        <EditText
+            android:id="@+id/start_name"
+            android:hint="@string/start_name_hint"
+            android:text="@={vm.name}"
+            app:inputVisible="@{vm.currentScreen==vm.SCREEN_START}"
+            android:layout_margin="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/start_action"
+            android:text="@string/start_action"
+            android:textColor="@android:color/black"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_gravity="center"
+            android:onClick="@{v-> vm.selectName()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/start_name" />
+
+    </LinearLayout>
+</layout>

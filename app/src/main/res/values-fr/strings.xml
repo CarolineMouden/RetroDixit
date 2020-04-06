@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">RetroDixit</string>
+
+
+    <string name="no_card_found">Aucune carte trouvée. :(</string>
+    <string name="start_name_hint">Nom</string>
+    <string name="start_action">Commencer</string>
+    <string name="current_select">Selectionner</string>
+    <string name="current_show">Montrer</string>
+    <string name="current_hide">Cacher</string>
+</resources>

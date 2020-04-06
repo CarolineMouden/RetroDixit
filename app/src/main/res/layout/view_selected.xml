@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="vm"
+            type="com.example.retrodixit.DixitViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/selected_parent"
+        android:visibility="@{vm.currentScreen==vm.SCREEN_WAITING_ROOM ? View.VISIBLE : View.GONE, default = gone}"
+        tools:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/selected_img"
+            app:imageSource="@{vm.selectedCard}"
+            android:scaleType="fitCenter"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/users_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+        <Button
+            android:text="@string/current_select"
+            style="@style/Widget.AppCompat.Button.Colored"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/users_list"
+            android:visibility="@{vm.isSelectCardVisible ? View.VISIBLE : View.GONE, default = gone}"
+            android:onClick="@{v -> vm.selectCard()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:text="@string/current_show"
+            style="@style/Widget.AppCompat.Button.Colored"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/users_list"
+            android:visibility="@{vm.isShowCardVisible ? View.VISIBLE : View.GONE, default = gone}"
+            android:onClick="@{v -> vm.showCard()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/selected_send"
+            android:text="@string/current_hide"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:visibility="@{vm.isHideCardVisible ? View.VISIBLE : View.GONE, default = gone}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/users_list"
+            android:onClick="@{v -> vm.hideCard()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/users_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:usersStatus="@{vm.userCardStatus}"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
